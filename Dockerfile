@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y \
 	&& curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
 	&& echo "deb https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
 	&& apt-get update && apt-get install -y \
+  git \
 	google-chrome-stable \
 	fontconfig \
 	fonts-ipafont-gothic \
@@ -60,8 +61,8 @@ RUN echo "[INFO] Install Node $NODE_VERSION." && \
     npm config set @sap:registry https://npm.sap.com --global  && \
     # Install plugins that your project needs:
     npm install karma --save-dev && \
-    npm install karma-jasmine karma-chrome-launcher jasmine-core karma-ui5 --save-dev && \
-    npm install --global karma-cli && \
+    npm install karma-chrome-launcher karma-ui5 karma-junit-reporter karma-coverage --save-dev && \
+    npm install --global @ui5/cli karma-cli && \
     ln -s "${NODE_HOME}/node-${NODE_VERSION}-linux-x64/bin/karma" /usr/local/bin/ && \
 # Handle users permission
 useradd --home-dir "${CHROME_USER_HOME}" --create-home --shell /bin/bash --user-group --uid 1000 --comment 'Chrome user' --password "$(echo weUseWeb |openssl passwd -1 -stdin)" chrome && \
