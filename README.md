@@ -1,6 +1,7 @@
 # piper_test
 ## sapui5_test
-Chrome headless + Node + karma
+Chrome headless + Node + karma + UI5 Karma addons. 
+You can run Ui5 karma tests. The only thing that is required: provide karma config file. 
 
 chrome headless + Karma + Node + possibility to extend to other testing tools.
 You can now use the ever-awesome Jessie Frazelle seccomp profile for Chrome.
