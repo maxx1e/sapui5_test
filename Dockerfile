@@ -61,7 +61,7 @@ RUN echo "[INFO] Install Node $NODE_VERSION." && \
     npm config set @sap:registry https://npm.sap.com --global  && \
     # Install plugins that your project needs:
     npm install karma --save-dev && \
-    npm install karma-chrome-launcher karma-ui5 karma-junit-reporter karma-coverage --save-dev && \
+    npm install karma-chrome-launcher karma-ui5 karma-junit-reporter karma-coverage karma-mocha-reporter --save-dev && \
     npm install --global @ui5/cli karma-cli && \
     ln -s "${NODE_HOME}/node-${NODE_VERSION}-linux-x64/bin/karma" /usr/local/bin/ && \
 # Handle users permission
