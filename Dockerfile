@@ -64,6 +64,13 @@ RUN echo "[INFO] Install Node $NODE_VERSION." && \
     npm install karma-chrome-launcher karma-ui5 karma-junit-reporter karma-coverage karma-mocha-reporter --save-dev && \
     npm install --global @ui5/cli karma-cli && \
     ln -s "${NODE_HOME}/node-${NODE_VERSION}-linux-x64/bin/karma" /usr/local/bin/ && \
+#----------------------------------------------------------------------------------------------------------------------------------
+# Handle chrome user to avoid --no-sandbox key
+#RUN groupadd --system chrome && \
+#    useradd --system --create-home --gid chrome --groups audio,video chrome && \
+#    mkdir --parents /home/chrome/reports && \
+#    chown --recursive chrome:chrome /home/chrome
+#----------------------------------------------------------------------------------------------------------------------------------
 # Handle users permission
 useradd --home-dir "${CHROME_USER_HOME}" --create-home --shell /bin/bash --user-group --uid 1000 --comment 'Chrome user' --password "$(echo weUseWeb |openssl passwd -1 -stdin)" chrome && \
 # Allow anybody to write into the images HOME
