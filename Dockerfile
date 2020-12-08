@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y \
 	apt-transport-https \
 	ca-certificates \
 	curl \
+	jq \
 	gnupg \
 	--no-install-recommends \
 	&& curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -50,6 +51,10 @@ RUN apt-get update && apt-get install -y \
 #    && rm chrome.zip \
 #    && ln -s "${CHROME_HOME}/chrome-linux/chrome" /usr/bin/google-chrome-unstable
 #------------------------------------------------------------------------------------------------------------------------------------
+# Install yq processing tool
+RUN curl -LJO https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_amd64 && \
+    chmod a+rx yq_linux_amd64 && \
+    mv yq_linux_amd64 /opt/yq
 # Install Node
 RUN echo "[INFO] Install Node $NODE_VERSION." && \
     mkdir -p "${NODE_HOME}" && \
