@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y \
 	fonts-noto \
 	fonts-freefont-ttf \
 	--no-install-recommends \
-	&& apt-get purge --auto-remove -y curl gnupg \
+	&& apt-get purge --auto-remove -y gnupg \
 	&& rm -rf /var/lib/apt/lists/*
 #------------------------------------------------------------------------------------------------------------------------------------
 # Install Chrome headless based on the revision version.
