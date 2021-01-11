@@ -39,6 +39,7 @@ RUN apt-get update && apt-get install -y \
 	fonts-symbola \
 	fonts-noto \
 	fonts-freefont-ttf \
+	fonts-liberation \
 	--no-install-recommends \
 	&& apt-get purge --auto-remove -y gnupg \
 	&& rm -rf /var/lib/apt/lists/*
