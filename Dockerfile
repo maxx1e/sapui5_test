@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 
 # Prepare build arguments
-ARG NODE_VERSION=v12.16.1
+ARG NODE_VERSION=v16.2.0
 ARG CHROME_USER_HOME=/home/chrome
 #ARG REV=776090
 ARG NPM_CONFIG_LOGLEVEL=info
