@@ -57,6 +57,13 @@ RUN curl -LJO https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_a
     chmod a+rx yq_linux_amd64 && \
     mv yq_linux_amd64 /opt/yq && \ 
     ln -sf /opt/yq /bin/yq
+#-----------------------------------------------------------------------------------------------
+# Due to changes in nodejs starting version 15. When no WORKDIR is specified,
+# npm install is executed in the root directory of the container, which is resulting
+# in the error  Tracker "idealTree" already exists
+#-----------------------------------------------------------------------------------------------
+WORKDIR /usr/app
+
 # Install Node
 RUN echo "[INFO] Install Node $NODE_VERSION." && \
     mkdir -p "${NODE_HOME}" && \
