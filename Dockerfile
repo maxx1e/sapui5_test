@@ -14,6 +14,12 @@ ENV NODE_HOME=/opt/nodejs
 ENV CHROME_HOME=/opt/chrome
 ENV DEBUG_ADDRESS=0.0.0.0
 ENV DEBUG_PORT=9222
+
+# Set Locale Environments
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+
 # Expose ports for chrome and Karma
 EXPOSE 9222
 EXPOSE 9876
@@ -21,6 +27,8 @@ EXPOSE 9876
 # Install deps + add Chrome Stable + purge all the things
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
+	locales \
+	locales-all \
 	ca-certificates \
 	curl \
 	jq \
