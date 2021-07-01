@@ -15,11 +15,6 @@ ENV CHROME_HOME=/opt/chrome
 ENV DEBUG_ADDRESS=0.0.0.0
 ENV DEBUG_PORT=9222
 
-# Set Locale Environments
-ENV LC_ALL en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.UTF-8
-
 # Expose ports for chrome and Karma
 EXPOSE 9222
 EXPOSE 9876
@@ -60,6 +55,14 @@ RUN apt-get update && apt-get install -y \
 #    && rm chrome.zip \
 #    && ln -s "${CHROME_HOME}/chrome-linux/chrome" /usr/bin/google-chrome-unstable
 #------------------------------------------------------------------------------------------------------------------------------------
+
+# Set the locale
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
+    locale-gen
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8
+
 # Install yq processing tool
 RUN curl -LJO https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_amd64 && \
     chmod a+rx yq_linux_amd64 && \
